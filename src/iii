@@ -1,26 +1,25 @@
-
 import React, { useRef, useState } from "react";
 import './App.css'
 
 function App() {
   const [file, setFile] = useState();
-
+  
   function handleChange(e) {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
-
+  
   const imgselect = () => {
-    ImgRef.current.click()
+    ImgRef.current.click();
   }
-
-  const ImgRef = useRef(null)
-
+  
+  const ImgRef = useRef(null);
+  
   return (
-    <div className="App" onClick={imgselect}>
+    <div className="App">
       <h2>Add Image:</h2>
       <input type="file" onChange={handleChange} ref={ImgRef} hidden />
-      <img src={file} />
+      <img src={file} onClick={imgselect} />
     </div>
   );
 }
